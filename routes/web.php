@@ -18,6 +18,8 @@ Route::middleware('auth')->group(function () {
     Route::apiResource('users', UserController::class);
 
     Route::get('profile', ProfileController::class)->name('profile');
+    Route::resource('/classrooms', \App\Http\Controllers\ClassroomController::class);
+    Route::resource('/laboratoriums', \App\Http\Controllers\LaboratoriumController::class);
 });
 
 Route::middleware('guest')->group(function () {
