@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ClassroomResource;
+use App\Http\Resources\ClassroomCollection;
 use App\Models\Classroom;
 use Illuminate\Http\Request;
 
@@ -12,14 +14,13 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        $classrooms = Classroom::all();
+        $classrooms = ClassroomResource::collection(Classroom::latest()->paginate(10));
         $session = session('success');
 
-        return inertia('Classrooms/index', [
+        return inertia('Classrooms/Index', [
             'classrooms' => $classrooms,
             'session' => $session,
         ]);
-
     }
 
     /**
