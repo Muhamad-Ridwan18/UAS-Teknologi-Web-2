@@ -47,7 +47,7 @@ export default function Sidebar() {
                     <li className="nav-item">
                         <Link className={`${route().current('classrooms.*') && 'active'} nav-link`} href={route('classrooms.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i className="fas fa-map-marker-alt text-sm opacity-10" />
+                                <i className="fas fa-chalkboard  text-sm opacity-10" />
                             </div>
                             <span className="nav-link-text ms-1">Classroom</span>
                         </Link>
