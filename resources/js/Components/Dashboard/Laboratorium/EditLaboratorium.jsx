@@ -1,20 +1,19 @@
 import { useForm } from '@inertiajs/inertia-react'
 import React, { useEffect } from 'react'
 
-export default function EditLaboratorium({close, model}) {
+export default function EditClassroom({close, model}) {
 
     const { data, setData, put, reset, errors } = useForm({
         name: model.name || '',
-        length: model.length || '',
-        width: model.width || '',
-        description: model.description || ''
+        description: model.description || '',
+        floor: model.floor || '',
     });
 
     const onChange = (e) => setData({ ...data, [e.target.id]: e.target.value });
 
     const onSubmit = (e) => {
         e.preventDefault();
-        put(route('fields.update', model.id), {
+        put(route('laboratoriums.update', model.id), {
             data, 
             onSuccess: () => {
                 reset(),
@@ -26,7 +25,7 @@ export default function EditLaboratorium({close, model}) {
     useEffect(() => {
         setData({...data,
             name: model.name || '',
-            capacity: model.capacity || '',
+            description: model.description || '',
             floor: model.floor || '',
         });
     }, [model]);
@@ -41,9 +40,9 @@ export default function EditLaboratorium({close, model}) {
                             {errors && <div className='text-danger mt-1'>{errors.name}</div>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="capacity" className="col-form-label">capacity:</label>
-                            <input type="text" className="form-control" name='capacity' value={data.capacity} onChange={onChange} id="capacity"/>
-                            {errors && <div className='text-danger mt-1'>{errors.capacity}</div>}
+                            <label htmlFor="description" className="col-form-label">description:</label>
+                            <input type="text" className="form-control" name='description' value={data.description} onChange={onChange} id="description"/>
+                            {errors && <div className='text-danger mt-1'>{errors.description}</div>}
                         </div>
                         <div className="form-group">
                             <label htmlFor="floor" className="col-form-label">floor:</label>

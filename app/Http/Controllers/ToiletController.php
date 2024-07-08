@@ -17,7 +17,7 @@ class ToiletController extends Controller
         $toilets = ToiletResource::collection(Toilet::latest()->paginate(10));
         $session = session('success');
 
-        return inertia('Toilet/index', [
+        return inertia('Toilets/Index', [
             'toilets' => $toilets,
             'session' => $session,
         ]);

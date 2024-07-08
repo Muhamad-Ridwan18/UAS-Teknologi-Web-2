@@ -5,8 +5,7 @@ export default function EditClassroom({close, model}) {
 
     const { data, setData, put, reset, errors } = useForm({
         name: model.name || '',
-        length: model.length || '',
-        width: model.width || '',
+        capacity: model.capacity || '',
         description: model.description || ''
     });
 
@@ -14,7 +13,7 @@ export default function EditClassroom({close, model}) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        put(route('fields.update', model.id), {
+        put(route('classrooms.update', model.id), {
             data, 
             onSuccess: () => {
                 reset(),

@@ -69,7 +69,7 @@ export default function Sidebar() {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={`${route().current('laboratoriums.*') && 'active'} nav-link`} href={route('laboratoriums.index')}>
+                        <Link className={`${route().current('toilets.*') && 'active'} nav-link`} href={route('toilets.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i className="fas fa-restroom text-sm opacity-10" />
                             </div>
