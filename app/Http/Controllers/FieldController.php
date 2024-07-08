@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Field;
 use Illuminate\Http\Request;
+use App\Http\Resources\FieldResource;
+use App\Http\Resources\FieldCollection;
 
 class FieldController extends Controller
 {
@@ -12,11 +14,11 @@ class FieldController extends Controller
      */
     public function index()
     {
-        $fields = Field::all();
+        $fields = FieldResource::collection(Field::latest()->paginate(10));
         $session = session('success');
 
-        return inertia('Field/index', [
-            'Field' => $fields,
+        return inertia('Fields/Index', [
+            'fields' => $fields,
             'session' => $session,
         ]);
     }
@@ -69,7 +71,7 @@ class FieldController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, field $field)
+    public function update(Request $request, Field $field)
     {
         $request->validate([
             'name' => 'required',

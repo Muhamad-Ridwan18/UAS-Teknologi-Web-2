@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', ProfileController::class)->name('profile');
     Route::resource('classrooms', \App\Http\Controllers\ClassroomController::class);
     Route::resource('laboratoriums', \App\Http\Controllers\LaboratoriumController::class);
+    Route::resource('fields', \App\Http\Controllers\FieldController::class);
+    Route::resource('toilets', \App\Http\Controllers\ToiletController::class);
 });
 
 Route::middleware('guest')->group(function () {

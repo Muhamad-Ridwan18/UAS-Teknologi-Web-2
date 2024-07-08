@@ -1,20 +1,15 @@
 import { useForm } from '@inertiajs/inertia-react'
-import React, { useEffect } from 'react'
+import React from 'react'
 
-export default function EditClassroom({close, model}) {
+export default function CreateLaboratorium({close}) {
 
-    const { data, setData, put, reset, errors } = useForm({
-        name: model.name || '',
-        length: model.length || '',
-        width: model.width || '',
-        description: model.description || ''
-    });
+    const {data, setData, post, reset, errors} = useForm({ name: '', description: '', floor: '', });
 
     const onChange = (e) => setData({ ...data, [e.target.id]: e.target.value });
 
     const onSubmit = (e) => {
         e.preventDefault();
-        put(route('fields.update', model.id), {
+        post(route('laboratoriums.store'), {
             data, 
             onSuccess: () => {
                 reset(),
@@ -22,14 +17,6 @@ export default function EditClassroom({close, model}) {
             }, 
         });
     }
-
-    useEffect(() => {
-        setData({...data,
-            name: model.name || '',
-            capacity: model.capacity || '',
-            floor: model.floor || '',
-        });
-    }, [model]);
 
     return (
         <>
@@ -41,19 +28,19 @@ export default function EditClassroom({close, model}) {
                             {errors && <div className='text-danger mt-1'>{errors.name}</div>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="capacity" className="col-form-label">capacity:</label>
-                            <input type="text" className="form-control" name='capacity' value={data.capacity} onChange={onChange} id="capacity"/>
-                            {errors && <div className='text-danger mt-1'>{errors.capacity}</div>}
+                            <label htmlFor="description" className="col-form-label">description:</label>
+                            <input type="text" className="form-control" name='description' value={data.description} onChange={onChange} id="description"/>
+                            {errors && <div className='text-danger mt-1'>{errors.description}</div>}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="floor" className="col-form-label">floor:</label>
-                            <input type="text" className="form-control" name='floor' value={data.floor} onChange={onChange} id="floor"/>
+                            <label htmlFor="floor" className="col-form-label">Floor:</label>
+                            <input type="floor" className="form-control" name='floor' value={data.floor} onChange={onChange} id="floor"/>
                             {errors && <div className='text-danger mt-1'>{errors.floor}</div>}
                         </div>
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" className="btn bg-gradient-primary">Update</button>
+                    <button type="submit" className="btn bg-gradient-primary">Save</button>
                 </div>
             </form>
         </>

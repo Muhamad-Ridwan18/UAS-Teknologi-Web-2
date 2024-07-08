@@ -1,7 +1,7 @@
 import { useForm } from '@inertiajs/inertia-react'
 import React, { useEffect } from 'react'
 
-export default function EditClassroom({close, model}) {
+export default function EditLaboratorium({close, model}) {
 
     const { data, setData, put, reset, errors } = useForm({
         name: model.name || '',

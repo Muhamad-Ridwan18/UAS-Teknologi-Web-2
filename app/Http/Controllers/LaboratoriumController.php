@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Laboratorium;
 use Illuminate\Http\Request;
+use App\Http\Resources\LaboratoriumResource;
+use App\Http\Resources\LaboratoriumCollection;
+
 
 class LaboratoriumController extends Controller
 {
@@ -12,10 +15,10 @@ class LaboratoriumController extends Controller
      */
     public function index()
     {
-        $laboratoriums = Laboratorium::all();
+        $laboratoriums = LaboratoriumResource::collection(Laboratorium::latest()->paginate(10));
         $session = session('success');
 
-        return inertia('Laboratoriums/index', [
+        return inertia('Laboratoriums/Index', [
             'laboratoriums' => $laboratoriums,
             'session' => $session,
         ]);

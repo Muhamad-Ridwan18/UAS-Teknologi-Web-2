@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\toilet;
+use App\Models\Toilet;
 use Illuminate\Http\Request;
+use App\Http\Resources\ToiletResource;
+use App\Http\Resources\ToiletCollection;
 
 class ToiletController extends Controller
 {
@@ -12,7 +14,7 @@ class ToiletController extends Controller
      */
     public function index()
     {
-        $toilets = Toilet::all();
+        $toilets = ToiletResource::collection(Toilet::latest()->paginate(10));
         $session = session('success');
 
         return inertia('Toilet/index', [
