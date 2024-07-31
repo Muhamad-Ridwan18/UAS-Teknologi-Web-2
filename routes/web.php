@@ -9,19 +9,21 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', HomeController::class)->name('home');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/', DashboardController::class)->name('home');
     Route::get('dashboard', DashboardController::class)->name('dashboard');
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
     
     Route::apiResource('users', UserController::class);
 
     Route::get('profile', ProfileController::class)->name('profile');
-    Route::resource('classrooms', \App\Http\Controllers\ClassroomController::class);
-    Route::resource('laboratoriums', \App\Http\Controllers\LaboratoriumController::class);
-    Route::resource('fields', \App\Http\Controllers\FieldController::class);
-    Route::resource('toilets', \App\Http\Controllers\ToiletController::class);
+    Route::resource('students', \App\Http\Controllers\StudentController::class);
+    Route::resource('teachers', \App\Http\Controllers\TeacherController::class);
+    Route::resource('subjects', \App\Http\Controllers\SubjectController::class);
+    Route::resource('classes', \App\Http\Controllers\ClassController::class);
+    Route::resource('timetables', \App\Http\Controllers\TimeTableController::class);
+    
 });
 
 Route::middleware('guest')->group(function () {

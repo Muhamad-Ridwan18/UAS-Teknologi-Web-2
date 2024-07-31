@@ -36,48 +36,57 @@ export default function Sidebar() {
                     <li className="nav-item mt-3">
                         <h6 className="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Manage</h6>
                     </li>                    
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link className={`${route().current('users.*') && 'active'} nav-link`} href={route('users.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                                 <i className="fas fa-user-lock text-sm opacity-10" />
                             </div>
                             <span className="nav-link-text ms-1">Users</span>
                         </Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
-                        <Link className={`${route().current('classrooms.*') && 'active'} nav-link`} href={route('classrooms.index')}>
+                        <Link className={`${route().current('timetables.*') && 'active'} nav-link`} href={route('timetables.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i className="fas fa-chalkboard  text-sm opacity-10" />
+                                <i className="fas fa-calendar text-sm opacity-10" />
                             </div>
-                            <span className="nav-link-text ms-1">Classroom</span>
+                            <span className="nav-link-text ms-1">Time Table</span>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={`${route().current('fields.*') && 'active'} nav-link`} href={route('fields.index')}>
+                        <Link className={`${route().current('students.*') && 'active'} nav-link`} href={route('students.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i className="fas fa-map-marker-alt text-sm opacity-10" />
+                                <i className="fas fa-user-graduate  text-sm opacity-10" />
                             </div>
-                            <span className="nav-link-text ms-1">Fields</span>
+                            <span className="nav-link-text ms-1">Student</span>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={`${route().current('laboratoriums.*') && 'active'} nav-link`} href={route('laboratoriums.index')}>
+                        <Link className={`${route().current('teachers.*') && 'active'} nav-link`} href={route('teachers.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i className="fas fa-flask text-sm opacity-10" />
+                                <i className="fas fa-chalkboard-teacher  text-sm opacity-10" />
                             </div>
-                            <span className="nav-link-text ms-1">Laboratorium</span>
+                            <span className="nav-link-text ms-1">Teacher</span>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className={`${route().current('toilets.*') && 'active'} nav-link`} href={route('toilets.index')}>
+                        <Link className={`${route().current('subjects.*') && 'active'} nav-link`} href={route('subjects.index')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                                <i className="fas fa-restroom text-sm opacity-10" />
+                                <i className="fas fa-book  text-sm opacity-10" />
                             </div>
-                            <span className="nav-link-text ms-1">Toilet</span>
+                            <span className="nav-link-text ms-1">Subject</span>
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link " as='a' method='post' href={route('logout')}>
+                        <Link className={`${route().current('classes.*') && 'active'} nav-link`} href={route('classes.index')}>
+                            <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i className="fas fa-school  text-sm opacity-10" />
+                            </div>
+                            <span className="nav-link-text ms-1">Class</span>
+                        </Link>
+                    </li>
+                    
+                    <li className="nav-item">
+                        <Link className="nav-link" method="post" as="a" href={route('logout')}>
                             <div className="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i className="fas fa-sign-out-alt text-danger text-sm opacity-10"></i>
                             </div>
